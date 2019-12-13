@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" >
+        <guolele v-for="article in articleList":key="article.title":heart="article"></guolele>
+        <!--<h1>{{article.title}}</h1>
+        <h2>作者:{{article.author}}}</h2>
+        <h3>{{article.publishDate}}}</h3>
+        <p>
+           <img :src="article.imgSrc"style="width:100px;height:50px"/>
+           {{article.content}}
+        </p> -->
+       
+    </div>
+    <script>
+        //定义guolele这个自定义组件
+        Vue.component('guolele',{
+            props:['heart'],
+            //template中定义的是组件的模板,也就是html和{{}}以及vue指令的组合
+            //template必须要有根标签
+            template:'<div>'+
+            '<h1 style="color:red">{{heart.title}}</h1>'+
+            '<h2>作者:{{heart.author}}</h2>'+
+            '<h3>时间:{{heart.publishDate}}</h3>'+
+            '<p>{{heart.content}}</p>'+
+            '</div>'
+        });
+            var app= new Vue({
+                el:"#app",
+                data: {
+                    articleList:[
+                        {
+                        title:"论乔碧螺的真实年龄",
+                        author:"郭乐乐",
+                        publishDate:"2019-12-10",
+                        content:"根据我多年的开车检验，我断定她和我差不多大，差不多20,并且合我心意。"
+                 },
+                 {
+                    title:"vue笔记",
+                        author:"郭乐乐",
+                        publishDate:"2019-12-10",
+                        content:"非常棒"
+                 },
+                 {
+                 title:"vue读书笔记",
+                        author:"郭乐乐",
+                        publishDate:"2019-12-10",
+                    content:"马马虎虎。"
+            }
+            ]
+            
+                }
+            })
+    
+    
+            
+        </script>
+</body>
+</html>
